@@ -17,12 +17,14 @@ app.use('/api/orders', orderRoutes)
 
 app.get('/', (req, res) => res.send('API Online'))
 
+const uri = process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce'
+
 if (require.main === module) {
-  mongoose.connect(process.env.MONGO_URI).then(() => {
+  mongoose.connect(uri).then(() => {
     app.listen(5000, () => console.log('Servidor rodando na porta 5000'))
   }).catch(err => console.error(err))
 } else {
-  mongoose.connect(process.env.MONGO_URI)
+  mongoose.connect(uri)
 }
 
 module.exports = app
