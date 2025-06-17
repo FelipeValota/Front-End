@@ -11,6 +11,7 @@ Este projeto contém uma aplicação completa de e-commerce separada em `backend
 ```bash
 # Backend
 cd backend
+cp .env.example .env # configure MONGO_URI e JWT_SECRET se necessario
 npm install
 npm run seed # popula o banco com produtos fictícios
 npm run dev

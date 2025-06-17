@@ -15,7 +15,8 @@ const products = [
   { name: 'Cadeira Gamer', description: 'Confortável', price: 899.9, category: 'moveis' }
 ]
 
-mongoose.connect(process.env.MONGO_URI).then(async () => {
+const uri = process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce'
+mongoose.connect(uri).then(async () => {
   await Product.deleteMany()
   await Product.insertMany(products)
   console.log('Produtos inseridos')
